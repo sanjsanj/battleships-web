@@ -8,10 +8,6 @@ class BattleShips < Sinatra::Base
     erb :index
   end
 
-get '/' do
-  "Hello World"
-end
-
   get '/new_game' do
     erb :new_game
   end
