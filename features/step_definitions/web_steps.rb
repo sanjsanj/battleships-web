@@ -3,8 +3,6 @@ Given(/^I am on the homepage$/) do
 end
 
 When(/^I follow "([^"]*)"$/) do |link|
-# puts '===' * 30
-# puts link.inspect
   click_link link
 end
 
@@ -28,3 +26,21 @@ Then(/^I expect to see "([^"]*)"$/) do |arg|
   expect(page).to have_content(arg)
 end
 
+Then(/^I expect to redirect to Start Game page$/) do
+  expect(current_path).to eq('/start_game')
+end
+
+Given(/^I am on Start Game page$/) do
+  visit '/start_game'
+end
+
+When(/^I see a board$/) do
+  coords = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3']
+  coords.each do |coord|
+    expect(page).to have_content(coord)
+  end
+end
+
+Then(/^I can place a ship on the board$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end

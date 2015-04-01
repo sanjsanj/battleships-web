@@ -12,10 +12,15 @@ Scenario: New Game
   Given I am on New Game page
   When I fill in "Name" with "Tupac"
   And click on "Submit"
-  Then I expect to see "Sup Tupac!"
+  Then I expect to redirect to Start Game page
 
 Scenario: Does not input name
   Given I am on New Game page
   When I fill in "Name" with ""
   And click on "Submit"
   Then I expect to see "Please enter name"
+
+Scenario: Start Game
+  Given I am on Start Game page
+  When I see a board
+  Then I can place a ship on the board
