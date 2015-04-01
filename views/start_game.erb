@@ -1,12 +1,22 @@
+<!-- <table>
+  <tr>
+    <td><%= @something[0] %></td>
+    <td><%= @something[1] %></td>
+  </tr>
+  <tr>
+    <td><%= @something[2] %></td>
+    <td><%= @something[3] %></td>
+  </tr>
+</table> -->
+
 <table>
-  <tr>
-    <td>A1</td>
-    <td>A2</td>
-  </tr>
-  <tr>
-    <td>B1</td>
-    <td>B2</td>
-  </tr>
+  <% @something.each do |row| %>
+    <tr>
+      <% row.each do |cell| %>
+        <td><%= cell %></td>
+      <% end %>
+    </tr>
+  <% end %>
 </table>
 
 <% if @message %>

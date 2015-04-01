@@ -36,14 +36,13 @@ class BattleShips < Sinatra::Base
 
   get '/start_game' do
     # @cell = Cell.new.content("")
-    @board_p1 = Board.new({ size: 4, cell: Cell })
-    @water = Water.new
-    # cell = Cell.new
-    @board_p1.fill_all_content(@water)
-    @something = @board_p1.grid.map { |row| row.map { |cell| cell } }
-    puts '---' * 10
-    puts @board_p1
-    puts @something
+    board_p1 = Board.new({ size: 100, cell: Cell })
+    board_p1.fill_all_content(Water.new)
+    board_p1.place Ship.new(size: 1), :A1
+    board_p1.place Ship.new(size: 1), :C3
+    board_p1.place Ship.new(size: 1), :D4
+    board_p1.place Ship.new(size: 1), :J10
+    @something = board_p1.grid.values.map { |cell| cell.content.class }.each_slice(Math.sqrt(board_p1.size)).to_a
     @name = session['player_1_name']
     @message = "Sup #{@name}!"
     erb :start_game
