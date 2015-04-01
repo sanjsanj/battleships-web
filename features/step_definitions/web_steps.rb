@@ -35,7 +35,7 @@ Given(/^I am on Start Game page$/) do
 end
 
 When(/^I see a board$/) do
-  coords = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3']
+  coords = ['A1', 'A2', 'B1', 'B2']
   coords.each do |coord|
     expect(page).to have_content(coord)
   end

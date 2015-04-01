@@ -3,6 +3,8 @@ require_relative 'board'
 require_relative 'cell'
 require_relative 'game'
 require_relative 'player'
+require_relative 'water'
+require_relative 'ship'
 
 class BattleShips < Sinatra::Base
   enable :sessions
@@ -26,15 +28,24 @@ class BattleShips < Sinatra::Base
       @message = 'Please enter name'
       erb :new_game
     else
-      @message = "Sup #{@name}!"
       session['player_1_name'] = @name
-      erb :start_game
+      session['player_2_name'] = 'CPU'
+      redirect :start_game
     end
   end
 
   get '/start_game' do
-    session['player_2_name'] = 'CPU'
+    # @cell = Cell.new.content("")
+    @board_p1 = Board.new({ size: 4, cell: Cell })
+    @water = Water.new
+    # cell = Cell.new
+    @board_p1.fill_all_content(@water)
+    @something = @board_p1.grid.map { |row| row.map { |cell| cell } }
+    puts '---' * 10
+    puts @board_p1
+    puts @something
     @name = session['player_1_name']
+    @message = "Sup #{@name}!"
     erb :start_game
   end
 

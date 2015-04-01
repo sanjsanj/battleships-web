@@ -22,5 +22,13 @@ Scenario: Does not input name
 
 Scenario: Start Game
   Given I am on Start Game page
-  When I see a board
+  Then I see a board
+
+
+Scenario: Placing the ship
+  Given I am on Start Game page
+  And I place my ship at ...
+  Then I should see 'Ship placed at : '
+
+
   Then I can place a ship on the board
