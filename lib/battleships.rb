@@ -8,20 +8,19 @@ class BattleShips < Sinatra::Base
     erb :index
   end
 
-  get('/new_game') do erb :new_game
+  get '/new_game'  do
+    erb :new_game
   end
 
   post '/new_game' do
     @name = params[:Name]
 
-    # if @name is empty redirect the player to same thing again, but this time send a message as well
-    # else welcome the player
-
     if @name.empty?
-      @message = 'Dont forget to enter your name'
+      @message = 'Please enter name'
       erb :new_game
     else
-      "Welcome #{@name}"
+      @message = "Sup #{@name}!"
+      erb :new_game
     end
   end
 

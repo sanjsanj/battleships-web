@@ -1,8 +1,11 @@
 <h2> What's your name? </h2>
 
-<% if @message %>
 
 <form action="/new_game" method="post">
   Name: <input type="text" name="Name">
         <input type="submit" value="Submit">
 </form>
+
+<% if @message %>
+<%= @message %>
+<% end %>
